@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "5aa85a15-f880-4802-8075-37453fb7e32a",
+		"name": "WebApi Core",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prospecto",
+			"item": [
+				{
+					"name": "Add Prospecto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombres\": \"Manuel\",\r\n  \"apellidos\": \"Quispe\",\r\n  \"tipoDocumentoId\": 1,\r\n  \"numeroDocumento\": \"43399123\",\r\n  \"email\": \"nice@gmai.com\",\r\n  \"numeroCelular\": \"952523651\",\r\n  \"departamentoId\": 1,\r\n  \"activo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Prospecto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Prospecto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Prospecto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Prospecto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"prospectoId\": 3,\r\n        \"nombres\": \"El\",\r\n        \"apellidos\": \"Barto\",\r\n        \"tipoDocumentoId\": 1,\r\n        \"numeroDocumento\": \"42525252\",\r\n        \"email\": \"jrambo@war.com\",\r\n        \"numeroCelular\": \"987258456\",\r\n        \"departamentoId\": 2,\r\n        \"fechaRegistro\": \"2021-05-25T00:00:00\",\r\n        \"activo\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deposito",
+			"item": [
+				{
+					"name": "Fitro Deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CodigoProductoFinanciero\": 14,\r\n    \"DepartamentoId\": 1,\r\n    \"MontoMaximoDeposito\": 1000,\r\n    \"PlazoMaximoDia\": 30,\r\n    \"TipoInstitucionId\": \"8\",\r\n    \"TipoMonedaId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Consulta/producto-financiero/pagina/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Consulta",
+								"producto-financiero",
+								"pagina",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Deposito",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/consulta/7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"consulta",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prestamo",
+			"item": [
+				{
+					"name": "Fitro Deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CodigoProductoFinanciero\": 14,\r\n    \"DepartamentoId\": 1,\r\n    \"MontoMaximoDeposito\": 1000,\r\n    \"PlazoMaximoDia\": 30,\r\n    \"TipoInstitucionId\": \"8\",\r\n    \"TipoMonedaId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Consulta/producto-financiero/pagina/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Consulta",
+								"producto-financiero",
+								"pagina",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Deposito",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/consulta/7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"consulta",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Get Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/clientes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"clientes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Departamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/prospecto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"prospecto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/clientes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"clientes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\":1,\r\n    \"nombre\": \"Manuel Enrique\",\r\n    \"apellido\": \"Quispe Manco\",\r\n    \"email\": \"manuel.quispe@materiagris.pe\",\r\n    \"createAt\": \"2021-05-23T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cliente Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Jazmin\",\r\n    \"apellido\" : \"Quispe Manco\",\r\n    \"email\": \"jazmin.crazy@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/clientes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"clientes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
