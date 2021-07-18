@@ -5984,11 +5984,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/josediaz/Downloads/downloads/manuelquispe/ConcentradorBackend/ConcentradorBackend/ConcentradorBackend.csproj",
+      "projectUniqueName": "/Users/josediaz/Downloads/concentrador/ConcentradorBackendNetCore/ConcentradorBackend/ConcentradorBackend.csproj",
       "projectName": "ConcentradorBackend",
-      "projectPath": "/Users/josediaz/Downloads/downloads/manuelquispe/ConcentradorBackend/ConcentradorBackend/ConcentradorBackend.csproj",
+      "projectPath": "/Users/josediaz/Downloads/concentrador/ConcentradorBackendNetCore/ConcentradorBackend/ConcentradorBackend.csproj",
       "packagesPath": "/Users/josediaz/.nuget/packages/",
-      "outputPath": "/Users/josediaz/Downloads/downloads/manuelquispe/ConcentradorBackend/ConcentradorBackend/obj/",
+      "outputPath": "/Users/josediaz/Downloads/concentrador/ConcentradorBackendNetCore/ConcentradorBackend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/josediaz/.nuget/NuGet/NuGet.Config"

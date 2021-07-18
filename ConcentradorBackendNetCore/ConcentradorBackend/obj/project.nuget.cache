@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R1x83r0rcSjd1kp99hkpDm6xY4FofRSGakgncGOQUwrat2/bo5hqZiua+s9M8R4kShyvMtYM192Xyto3cQMNLA==",
+  "dgSpecHash": "DVeOeC8S946lNCODauj1WgmADs8BTvKZaWct75WKpW9L1rJKiDlz91oXRMI7jwekHcgEc2D8zMP4NPxYeLZS7A==",
   "success": true,
-  "projectFilePath": "/Users/josediaz/Downloads/downloads/manuelquispe/ConcentradorBackend/ConcentradorBackend/ConcentradorBackend.csproj",
+  "projectFilePath": "/Users/josediaz/Downloads/concentrador/ConcentradorBackendNetCore/ConcentradorBackend/ConcentradorBackend.csproj",
   "expectedPackageFiles": [
     "/Users/josediaz/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/josediaz/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
