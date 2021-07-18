@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Roboto-Light;
+    src: url(../../../../../assets/fonts/DMSans-Medium.ttf);
+}
+
+* {
+    font-family: Roboto-Light Arial, Helvetica, sans-serif;
+}
+
+.titulo {
+    color: #808080;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 0px;
+}
+
+.detalle {
+    background-color: #EEEEEE;
+}
+
+.textoLabel {
+    color: #7F8C8D;
+}
+
+.textoDato {
+    color: #7F8C8D;
+}
+
+.subitulo {
+    color: #808080;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 0px;
+}
+
+.card-cabecero {
+    padding-top: 70px;
+    margin-top: 0px;
+    padding-bottom: 12px;
+    font-size: 35px;
+    color: #E85F5F;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.buton-compara {
+    width: 50%;
+}
+
+.Table {
+    display: table;
+    width: 100%;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+    color: #5a5f5f;
+}
+
+.Row {
+    display: table-row;
+    color: #5a5f5f;
+    text-align: center;
+}
+
+.Cell-h {
+    display: table-cell;
+    border-block-end: solid #7F8C8D;
+    background-color: #F8F9F9;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.Cell {
+    display: table-cell;
+    border-block-end: solid #7F8C8D;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.titulo-p {
+    display: flex;
+    justify-content: center;
+}

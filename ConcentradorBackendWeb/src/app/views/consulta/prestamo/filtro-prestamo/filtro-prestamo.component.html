@@ -1,0 +1,115 @@
+<router-outlet></router-outlet>
+<app-compara-prestamo *ngIf="!estado" (emisor)="cargarData($event)" (ocultar)="ocultar($event)"></app-compara-prestamo>
+<div [hidden]="route.children.length !== 0">
+    <div *ngIf="estado">
+        <div class="p-grid p-justify-center card-cabecero">
+            <div class="p-col-10 p-sm-10 p-md-9 p-lg-9 titulo-p">
+                Consulta y elije tu Prestamo Personal
+            </div>
+        </div>
+        <br>
+        <br>
+        <form [formGroup]="form" (ngSubmit)="filtrar()">
+            <div class="p-grid p-justify-center campos">
+                <div class="p-col-12 p-md-8 p-lg-6">
+                    <div class="p-grid p-justify-center">
+                        <div class="p-col-10 p-sm-4 p-md-4 p-lg-4">
+                            <div class="textos">Monedas: </div>
+                            <br>
+                            <div class="p-grid p-justify-between">
+                                <div class="p-col-xs-6 p-sm-6 p-md-6 p-lg-6">
+                                    <input class="radioButton" id="soles" type="radio" name="tipoMoneda" value="5"
+                                        (change)="filtrar()" formControlName="tipoMoneda" />
+                                    <label for="soles"> &nbsp;Soles</label>
+                                </div>
+                                <div class="p-col-xs-6 p-sm-6 p-md-6 p-lg-6">
+                                    <input class="radioButton" type="radio" id="dolar" name="tipoMoneda" value="6"
+                                        (change)="filtrar()" formControlName="tipoMoneda" />
+                                    <label for="dolar"> &nbsp;Dolar</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-10 p-sm-4 p-md-4 p-lg-4">
+                            <p class="textos">Monto: </p>
+                            <p class="valores">{{form.value.monto}}</p>
+                            <p-slider [min]="1000" [max]="100000" [step]="1000" formControlName="monto"
+                                (onSlideEnd)="filtrar()" (onChange)="activateAnimation()"></p-slider>
+                        </div>
+                        <div class="p-col-10 p-sm-4 p-md-4 p-lg-4">
+                            <p class="textos">Plazo: </p>
+                            <p class="valores">{{form.value.plazo}} Meses</p>
+                            <p-slider [min]="3" [max]="60" formControlName="plazo" (onSlideEnd)="filtrar()"
+                                (onChange)="activateAnimation()"></p-slider>
+                        </div>
+                    </div>
+                    <div class="p-grid p-justify-center">
+                        <div class="p-col-10 p-sm-4 p-md-4 p-lg-4">
+                            <p class="textos">Ingresos: </p>
+                            <p class="valores">{{form.value.ingreso}}</p>
+                            <p-slider [min]="500" [max]="20000" [step]="100" formControlName="ingreso"
+                                (onSlideEnd)="filtrar()" (onChange)="activateAnimation()"></p-slider>
+                        </div>
+                        <div class="p-col-10 p-sm-4 p-md-4 p-lg-4">
+                            <p class="textos">Ubicacion: </p>
+                            <p-dropdown [options]="departamentos"
+                                [style]="{'width':'100%','border-radius':'30rem','border-color':'#4D97F3'}"
+                                (onChange)="filtrar()" formControlName="departamento"></p-dropdown>
+                        </div>
+                        <div class="p-col-10 p-sm-3 p-md-4 p-lg-4">
+                            <div class="textos filtros">Solo bancos: </div>
+                            <div class="p-grid p-justify-between">
+                                <div class="p-col-12 p-sm-6 p-md-6 p-lg-6">
+                                    <input class="radioButton" id="si" type="radio" name="banco" value="8"
+                                        (change)="filtrar()" formControlName="banco" />
+                                    <label for="si"> &nbsp;Si</label>
+                                </div>
+                                <div class="p-col-12 p-sm-6 p-md-6 p-lg-6">
+                                    <input class="radioButton" id="no" type="radio" name="banco" value="9"
+                                        (change)="filtrar()" formControlName="banco" />
+                                    <label for="no"> &nbsp;No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div style="padding-left: 20px; padding-right: 20px;">
+            <p-table [value]="dataProducto">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="cabecero" id="">Producto</th>
+                        <th class="cabecero" id="">Logo</th>
+                        <th class="cabecero" id="">Tipo Moneda</th>
+                        <th class="cabecero" id="">Interes TEA %</th>
+                        <th class="cabecero" id="">Interes TCEA %</th>
+                        <th class="cabecero" id="">Ubicacion</th>
+                        <th class="cabecero" id="">Mas Info</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-datos>
+                    <tr>
+                        <td>{{datos.producto}}</td>
+                        <td> <img [src]="datos.pathImagen" height="28" class="p-shadow-4" alt="La imagen no existe" />
+                        </td>
+                        <td>{{datos.moneda}}</td>
+                        <td>{{datos.porcentajeComision}} %</td>
+                        <td>{{datos.porcentajeTea}} %</td>
+                        <td>{{datos.ubicacion}}</td>
+                        <td>
+                            <button pButton type="button" pTooltip="Ver detalle" tooltipPosition="top" icon="fa fa-info"
+                                class="p-button-raised p-button-primary p-button-rounded p-button-sm boton_detalle"
+                                [routerLink]="['detalle', datos.consultaEntidadProductoId]"></button> &nbsp;
+                            <button pButton type="button" pTooltip="Solicitar" tooltipPosition="top"
+                                icon="fa fa-arrow-circle-right"
+                                class="p-button-raised p-button-warning p-button-rounded p-button-sm boton_detalle"
+                                routerLink="/prestamo/solicitud"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

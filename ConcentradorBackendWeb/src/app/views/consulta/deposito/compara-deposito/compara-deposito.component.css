@@ -1,0 +1,135 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../../../../assets/fonts/roboto/Roboto-Thin.ttf);
+}
+
+.imagen {
+    width: 100%;
+}
+
+.logo {
+    height: 30px;
+}
+
+.botones {
+    width: 100%;
+    border-radius: 30rem;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.entrada {
+    border-radius: 30rem;
+    font-size: 18px;
+    border-color: #4D97F3;
+    width: 100%;
+}
+
+.valores {
+    color: #E85F5F;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 11px;
+    display: flex;
+    justify-content: center;
+}
+
+.textos {
+    color: #99A3A4;
+    font-size: 17px;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.textoOferta {
+    color: #99A3A4;
+    font-size: 13px;
+}
+
+.buton-compara {
+    width: 100%;
+}
+
+.card-cabecero {
+    margin-top: 15px;
+    padding-bottom: 12px;
+    font-size: 30px;
+    color: #E85F5F;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.campos {
+    font-family: Roboto-Ligth Arial, Helvetica, sans-serif;
+}
+
+.texto-cabecero {
+    font-size: 32px;
+    margin-left: -16px;
+    margin-top: -32px;
+    margin-bottom: 10px;
+    width: 104%;
+    font-weight: bold;
+    font-family: Roboto Arial, Helvetica, sans-serif;
+    background-color: #2ECC71 !important;
+    color: #ffffff !important;
+}
+
+.fondo {
+    background-image: url(../../../../../assets/img/portada2.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.formulario {
+    margin-top: 27%;
+}
+
+.titulo-p {
+    display: flex;
+    justify-content: center;
+}
+
+.radioButton {
+    width: 40px;
+    block-size: 25px;
+}
+
+.etiqueta {
+    color: #E85F5F;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.radio {
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+}
+
+.titulo {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+    margin-top: -32px;
+    margin-bottom: 0px;
+    width: 100%;
+    font-family: Roboto-Ligth, Arial, Helvetica, sans-serif;
+    background-color: #2ECC71 !important;
+    color: #ffffff !important;
+}
+
+.ubicacion {
+    line-height: 30px;
+    padding-bottom: 11px;
+}

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../../../../assets/fonts/roboto/Roboto-Thin.ttf);
+}
+
+.card-cabecero {
+    padding-top: 90px;
+    padding-bottom: 12px;
+    font-size: 30px;
+    color: #E85F5F;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.textos {
+    color: #99A3A4;
+    line-height: 30px;
+}
+
+.entrada {
+    border-radius: 30rem;
+    font-size: 18px;
+    border-color: #4D97F3;
+    width: 100%;
+}
+
+.textoOferta {
+    color: #99A3A4;
+    font-size: 13px;
+}
+
+.buton-compara {
+    width: 50%;
+}
+
+.fondo {
+    background-image: url(../../../../../assets/img/fondo.png);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    padding-top: 12%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.combo {
+    width: 100% !important;
+}
+
+.titulo {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+    margin-top: -32px;
+    margin-bottom: 0px;
+    width: 100%;
+    font-family: Roboto-Ligth, Arial, Helvetica, sans-serif;
+    background-color: #2ECC71 !important;
+    color: #ffffff !important;
+}
+
+.formulario {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -42%);
+}

@@ -1,0 +1,85 @@
+<div class="p-grid p-justify-center card-cabecero">
+    <div class="p-col-12 p-sm-12 p-md-12 p-lg-12 titulo-p">
+        {{producto.producto}} - {{producto.descripcion}}
+    </div>
+</div>
+<div class="p-grid p-justify-center detalle">
+    <div class="p-col-12 p-md-8 p-lg-6">
+        <div class="p-grid p-justify-center">
+            <div class="p-sm-6 p-md-3 p-lg-3">
+                <p class="textoLabel" style="padding-bottom: 4px;">Institucion: </p>
+                <p class="textoLabel" style="padding-bottom: 6px;">Producto:</p>
+                <p class="textoLabel" style="padding-bottom: 4x;">Moneda:</p>
+                <p class="textoLabel" style="padding-bottom: 4px;">TEA %:</p>
+                <p class="textoLabel" style="padding-bottom: 4px;">Monto Minimo: </p>
+            </div>
+            <div class="p-sm-6 p-md-5 p-lg-4">
+                <p class="textoDato" style="padding-bottom: 4px;">{{producto.producto}}</p>
+                <p class="textoDato" style="padding-bottom: 4px;">{{producto.nombre}}</p>
+                <p class="textoDato" style="padding-bottom: 4px;">{{producto.moneda}}</p>
+                <p class="textoDato" style="padding-bottom: 4px;">{{producto.porcentajeTea}}</p>
+                <p class="textoDato" style="padding-bottom: 4px;">{{producto.montoMinimoDeposito}}</p>
+                <p class="textoDato" style="padding-bottom: 4px;" *ngIf="producto.montoMinimoDeposito == null">{{producto.montoMinimoPrestamo}}</p>
+            </div>
+            <div class="p-sm-12 p-md-3 p-lg-3">
+                <img [src]="producto.pathImagen" height="50" alt="" />
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="p-grid p-justify-center">
+            <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                <div class="p-grid">
+                    <button pButton type="button" label="Lo quiero" routerLink="/prestamo/solicitud" class="p-button-raised p-button-danger p-button-rounded buton-compara"></button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="p-grid p-justify-center">
+            <div class="p-col-10 p-sm-10 p-md-10 p-lg-10">
+                <div class="p-grid">
+                    <span class="textoLabel">{{producto.observacion}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="p-grid p-justify-center">
+    <div class="p-sm-10 p-md-6 p-lg-6">
+        <p class="subitulo">Tasa de Interes </p>
+        <br>
+        <div class="Table">
+            <div class="Heading">
+                <div class="Cell-h">
+                    <p>Salario </p>
+                </div>
+                <div class="Cell-h">
+                    <p>Monto Maximo</p>
+                </div>
+                <div class="Cell-h">
+                    <p>Plazo </p>
+                </div>
+                <div class="Cell-h">
+                    <p>Tea </p>
+                </div>
+            </div>
+            <br>
+            <div class="Row">
+                <div class="Cell">
+                    <p>{{producto.IngresoPermitido}} {{producto.moneda}}</p>
+                </div>
+                <div class="Cell">
+                    <p>{{producto.MontoMaximoDeposito}}</p>
+                    <p *ngIf="producto.MontoMaximoDeposito == null">{{producto.montoMaximoPrestamo}} {{producto.moneda}}</p>
+                </div>
+                <div class="Cell">
+                    <p *ngIf="producto.plazoMinimoDia == null || producto.PlazoMaximoDia == null">{{producto.plazoMinimoMes}} meses a {{producto.PlazoMaximoMes}} meses</p>
+                </div>
+                <div class="Cell">
+                    <p>{{producto.porcentajeTea}} % </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

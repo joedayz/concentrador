@@ -1,0 +1,50 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../../assets/fonts/roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Light;
+    src: url(../../../assets/fonts/roboto/Roboto-Light.ttf);
+}
+
+.imagen {
+    width: 100%;
+}
+
+.card-cabecero {
+    margin-top: 2px;
+    padding-bottom: 12px;
+    font-size: 30px;
+    background-color: #E85F5F !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    font-family: Roboto Arial, Helvetica, sans-serif;
+}
+
+.icono-menu {
+    font-size: 60px;
+    color:#58d68d ;
+}
+
+.texto-menu {
+    font-size: 20px;
+    color: #99A3A4;
+    font-family: Roboto-Light Arial, Helvetica, sans-serif;
+
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #68D68D;
+}
+
+.titulo-p{
+    display: flex;
+    justify-content: center;   
+}

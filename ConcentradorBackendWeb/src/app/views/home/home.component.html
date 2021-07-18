@@ -1,0 +1,21 @@
+<img class="imagen" src="../../../assets/img/portada.jpg" alt="">
+<div class="p-grid p-justify-center card-cabecero">
+    <div class="p-col-10 p-sm-10 p-md-9 p-lg-9 titulo-p">
+        Compara los mejores seguros y productos financieros
+    </div>
+</div>
+<br>
+<div class="p-grid p-justify-center">
+    <div class="p-col-6">
+        <div class="p-grid">
+            <div class="p-sm-12 p-md-3 p-lg-2" *ngFor="let opciones of opcion">
+                <em class="icono-menu"><span class={{opciones.icono}}></span></em>
+                <br>
+                <a class="texto-menu" [routerLink]="[opciones.pathUrl]">
+                    {{opciones.nombre}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

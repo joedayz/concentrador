@@ -1,0 +1,179 @@
+name: $(Build.SourceBranch)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+    - master
+    - releases/*
+    - feature/*
+    - hotfix/*
+    - topic/*
+    - test/*
+
+resources:
+- repo: self
+
+variables:
+  domain: 'pe.farmaciasperuanas'
+  projectname: 'concentrador'
+  nameapp: 'concentrador'
+  typeapp: 'web'
+  owner: 'fps'
+  dockerRegistryServiceConnection: 'fpsregistry'
+  vmImageName: 'ubuntu-latest'
+  uat: false
+
+stages:
+- stage: buildStage
+  displayName: buildStage
+  jobs:
+  - job: buildJob
+    displayName: buildJob
+    continueOnError: false
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - bash: |
+        ccommit="$(Build.SourceVersion)"
+        echo "##vso[task.setvariable variable=tag]${ccommit:0:8}"
+      displayName: 'createTag'
+      name: createTag
+    - bash: |
+        fullbranch=$(Build.SourceBranch)
+        echo "##vso[task.setvariable variable=branch]${fullbranch:11}"
+      displayName: 'readBranch'
+      name: readBranch
+    - task: Npm@1
+      displayName: 'npmInstall'
+      name: npmInstall
+      inputs:
+        command: custom
+        verbose: false
+        customCommand: 'install'
+    - task: Npm@1
+      displayName: 'npmBuild'
+      name: npmBuild
+      inputs:
+        command: custom
+        verbose: false
+        customCommand: 'run build --prod'
+    - bash: |
+        sed -i 's/#{PROJECT_KEY}/$(domain).$(projectname):$(owner)-$(typeapp)-$(nameapp)/g' $(Pipeline.Workspace)/s/sonar-project.properties
+        sed -i 's/#{PROJECT_NAME}/$(owner)-$(typeapp)-$(nameapp)/g' $(Pipeline.Workspace)/s/sonar-project.properties
+        sed -i 's/#{PROJECT_VERSION}/$(tag)/g' $(Pipeline.Workspace)/s/sonar-project.properties
+      displayName: replaceSonarParameters
+      name: replaceSonarParameters
+      enabled: false
+    - task: SonarCloudPrepare@1
+      displayName: 'prepareAnalisisSonarCloud'
+      name: prepareAnalisisSonarCloudmaster
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+      inputs:
+        SonarCloud: 'SONARCLOUD-FARMACIAS'
+        organization: 'farmacias-ti'
+        scannerMode: CLI
+        projectKey: $(domain).$(projectname):$(owner)-$(typeapp)-$(nameapp)
+        projectName: $(owner)-$(typeapp)-$(nameapp)
+        extraProperties: |
+          sonar.projectKey=$(domain).$(projectname):$(owner)-$(typeapp)-$(nameapp)
+          sonar.projectName=$(owner)-$(typeapp)-$(nameapp)
+          sonar.projectVersion=$(tag)
+          sonar.coverage.jacoco.xmlReportPaths=CCReport43F6D5EF/jacoco.xml
+          sonar.sources=src
+          sonar.sourceEncoding=UTF-8
+          sonar.exclusions=**/dist/**/*,**/node_modules/**/*,**/*.spec.ts,**/src/assets/**/*
+          sonar.tests=src
+          sonar.test.inclusions=**/*.spec.ts
+          sonar.ts.tslintconfigpath=tslint.json
+          sonar.typescript.lcov.reportPaths=coverage/lcov.info
+        enabled: true
+    - task: SonarCloudPrepare@1
+      displayName: 'prepareAnalisisSonarCloud'
+      name: prepareAnalisisSonarCloud
+      condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/releases/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/topic/'),startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
+      inputs:
+        SonarCloud: 'SONARCLOUD-FARMACIAS'
+        organization: 'farmacias-ti'
+        scannerMode: CLI
+        projectKey: $(domain).$(projectname):$(owner)-$(typeapp)-$(nameapp)
+        projectName: $(owner)-$(typeapp)-$(nameapp)
+        extraProperties: |
+          sonar.projectKey=$(domain).$(projectname):$(owner)-$(typeapp)-$(nameapp)
+          sonar.projectName=$(owner)-$(typeapp)-$(nameapp)
+          sonar.projectVersion=$(tag)
+          sonar.coverage.jacoco.xmlReportPaths=CCReport43F6D5EF/jacoco.xml
+          sonar.sources=src
+          sonar.sourceEncoding=UTF-8
+          sonar.exclusions=**/dist/**/*,**/node_modules/**/*,**/*.spec.ts,**/src/assets/**/*
+          sonar.tests=src
+          sonar.test.inclusions=**/*.spec.ts
+          sonar.ts.tslintconfigpath=tslint.json
+          sonar.typescript.lcov.reportPaths=coverage/lcov.info
+          sonar.branch.name=$(branch)
+        enabled: true
+    - task: SonarCloudAnalyze@1
+      displayName: 'Run Code Analysis'
+      enabled: true
+      continueOnError: true
+    - task: SonarCloudPublish@1
+      displayName: 'Publish Quality Gate Result'
+      enabled: false
+      continueOnError: true
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: '$(owner)-$(typeapp)-$(nameapp)'
+        dockerfile: 'Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+- stage: devDeploy
+  displayName: 'devDeploy'
+  condition: and(succeeded('buildStage'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+    - deployment: devDeploy
+      displayName: devDeploy
+      variables:
+      - group: VAR
+      - name: 'profile'
+        value: 'dev'
+      - name: 'namespace'
+        value: 'development'
+      pool:
+        vmImage: $(vmImageName)
+      environment: 'development'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - bash: |
+                ccommit="$(Build.SourceVersion)"
+                echo "##vso[task.setvariable variable=tag]${ccommit:0:8}"
+              displayName: 'setvariables'
+              name: setvariables
+            - task: AzureCLI@2
+              displayName: 'Azure CLI '
+              inputs:
+                azureSubscription: 'Desarrollo (7c947db2-4b57-48ef-a998-d0f495f492fc)'
+                scriptType: bash
+                scriptLocation: inlineScript
+                inlineScript: |
+                  az container create \
+                  --resource-group RG_TI-ARQ-DIG-CONCENTRADOR \
+                  --cpu 1 \
+                  --dns-name-label $(profile)-$(typeapp)-$(nameapp) \
+                  --environment-variables PROFILE=$(profile) \
+                  --image fpsregistry.azurecr.io/$(owner)-$(typeapp)-$(nameapp):$(tag) \
+                  --ip-address Public \
+                  --location eastus \
+                  --memory 0.5 \
+                  --name $(typeapp)-$(nameapp) \
+                  --os-type Linux \
+                  --ports 80 \
+                  --protocol TCP \
+                  --registry-login-server fpsregistry.azurecr.io \
+                  --registry-password $(registry-password) \
+                  --registry-username fpsregistry \
+                  --restart-policy OnFailure \
+                  --subscription Desarrollo

@@ -1,0 +1,99 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../../../../assets/fonts/roboto/Roboto-Thin.ttf);
+}
+@font-face{
+    font-family: Roboto-Ligth;
+    src: url(../../../../../assets/fonts/roboto/Roboto-Light.ttf);
+}
+.botones {
+    width: 100%;
+    border-radius: 30rem;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.entrada {
+    border-radius: 30rem;
+    font-size: 18px;
+    border-color: #4D97F3;
+    width: 100%;
+}
+
+.valores {
+    color: #E85F5F;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 11px;
+    display: flex;
+    justify-content: center;
+}
+
+.textos {
+    color: #99A3A4;
+    font-size: 17px;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.textoOferta {
+    color: #99A3A4;
+    font-size: 13px;
+}
+
+.buton-compara {
+    width: 100%;
+}
+
+.card-cabecero {
+    padding-top: 70px;
+    margin-top: 0px;
+    padding-bottom: 12px;
+    font-size: 26px;
+    background-color:  #FA8171  !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    font-family: Roboto Arial, Helvetica, sans-serif;
+}
+
+.boton_detalle {
+    border-radius: 70px;
+}
+
+.botones2 {
+    border-radius: 30rem;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.campos{
+    font-family: Roboto-Ligth Arial, Helvetica, sans-serif;
+}
+
+.cabecero{
+    background-color:#2ECC71 !important;
+    font-size: 18px;
+    color: #ffffff !important;
+}
+
+.radioButton{
+    width: 20px;
+    block-size: 20px;
+}
+
+.titulo-p{
+    display: flex;
+    justify-content: center;   
+}
+
+.filtro{
+    padding-bottom: 10px;
+}
+.ubicacion{
+    padding-bottom: 6px;
+}
+.espacio{
+    display: flex;
+    justify-content: center;
+}

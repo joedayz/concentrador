@@ -1,0 +1,67 @@
+<div class="p-grid p-justify-center fondo">
+    <div class="p-col-12 p-md-8 p-lg-6 formulario">
+        <div class="p-col-8 p-sm-10 p-md-12 p-lg-12 titulo">
+            Solicitar Deposito a Plazo
+        </div>
+        <p-card>
+            <form [formGroup]="form" (ngSubmit)="guardar()">
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Nombres: </p>
+                        <input type="text" pInputText class="entrada" formControlName="nombre" />
+                    </div>
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Apellidos: </p>
+                        <input type="text" pInputText class="entrada" formControlName="apellido" />
+                    </div>
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Tipo Documento: </p>
+                        <p-dropdown autoWidth="false" [style]="{'width':'100%'}" [options]="tipoDocumewnto" formControlName="idTipoDocumento"></p-dropdown>
+                    </div>
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Numero Documento: </p>
+                        <input type="text" pInputText class="entrada" formControlName="numeroDocumento" />
+                    </div>
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Email: </p>
+                        <input type="text" pInputText class="entrada" formControlName="email" />
+                    </div>
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Celular: </p>
+                        <input type="text" pInputText class="entrada" formControlName="celular" />
+                    </div>
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Departamento: </p>
+                        <p-dropdown autoWidth="false" [style]="{'width':'100%'}" [options]="departamento" formControlName="DepartamentoId"></p-dropdown>
+                    </div>
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <p class="textos">Comentario: </p>
+                        <input type="text" pInputText class="entrada" placeholder="Opcional.." />
+                    </div>
+                </div>
+                <br>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-6 p-lg-6">
+                        <div class="p-grid p-justify-center">
+                            <button pButton type="submit" label="Solicitar" class="p-button-raised p-button-danger p-button-rounded buton-compara"></button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-10 p-sm-6 p-md-4 p-lg-4">
+                        <div class="p-grid p-justify-center">
+                            <button pButton pRipple type="button" icon="pi pi pi-arrow-left" label="Volver" class="p-button-rounded p-button-warning" routerLink="/deposito-plazo/result"></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>
